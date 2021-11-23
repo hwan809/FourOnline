@@ -1,0 +1,4 @@
+name: FourNetWork
+version: '${project.version}'
+main: me.fournetwork.vivace.Main
+authors: [ vivace ]

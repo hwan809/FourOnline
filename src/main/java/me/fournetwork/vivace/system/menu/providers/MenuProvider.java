@@ -1,11 +1,9 @@
-package me.fournetwork.vivace.menu.providers;
+package me.fournetwork.vivace.system.menu.providers;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import me.fournetwork.vivace.menu.Inventories;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,7 +20,6 @@ public class MenuProvider implements InventoryProvider {
         //0. 쓰레기통 CAULDRON
         contents.set(1, 0, ClickableItem.of(new ItemStack(Material.CAULDRON), e -> {
             player.closeInventory();
-            Inventories.GARBAGE_INVENTORY.open(player);
         }));
 
         //1. 가방 CHEST

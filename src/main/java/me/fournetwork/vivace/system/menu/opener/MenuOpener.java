@@ -1,10 +1,10 @@
-package me.fournetwork.vivace.menu.opener;
+package me.fournetwork.vivace.system.menu.opener;
 
+import me.fournetwork.vivace.system.menu.Inventories;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
-import org.bukkit.event.player.PlayerToggleSneakEvent;
 
 public class MenuOpener implements Listener {
     @EventHandler
@@ -15,6 +15,6 @@ public class MenuOpener implements Listener {
             return;
         }
 
-
+        Inventories.MENU_INVENTORY.open(player);
     }
 }

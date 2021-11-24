@@ -26,7 +26,6 @@ public final class Main extends JavaPlugin {
 
     private void initSystemManager() {
         systemManager = new SystemManager();
-        Menu
-        systemManager.setup();
+        //systemManager.setup();
     }
 }

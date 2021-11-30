@@ -30,7 +30,9 @@ public class GarbageCan implements Listener, InventoryLinker {
     }
 
     @EventHandler
-    public void clickedInventory(InventoryClickEvent e) {
-
+    public void onClickInventory(InventoryClickEvent e) {
+        if (!e.getView().getTitle().equals(invName)) {
+            return;
+        }
     }
 }

@@ -6,6 +6,7 @@ import me.fournetwork.vivace.Main;
 import me.fournetwork.vivace.system.System;
 import me.fournetwork.vivace.system.menu.inventories.BagGUI;
 import me.fournetwork.vivace.system.menu.inventories.GarbageCan;
+import me.fournetwork.vivace.system.menu.inventories.PlayerInfo;
 import me.fournetwork.vivace.system.menu.listener.MenuListener;
 import me.fournetwork.vivace.system.menu.providers.MenuProvider;
 import me.fournetwork.vivace.util.inventory.InventoryLinker;
@@ -88,6 +89,7 @@ public class MenuSystem implements System {
     public void addLinkers() {
         invLinkers.put(GarbageCan.class.getName(), new GarbageCan());
         invLinkers.put(BagGUI.class.getName(), new BagGUI());
+        invLinkers.put(PlayerInfo.class.getName(), new PlayerInfo());
 
         for (InventoryLinker linker : invLinkers.values()) {
             Main.getInstance().getServer().getPluginManager().registerEvents((Listener) linker, Main.getInstance());

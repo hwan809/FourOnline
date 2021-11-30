@@ -7,10 +7,12 @@ import me.fournetwork.vivace.Main;
 import me.fournetwork.vivace.system.menu.MenuSystem;
 import me.fournetwork.vivace.system.menu.inventories.BagGUI;
 import me.fournetwork.vivace.system.menu.inventories.GarbageCan;
+import me.fournetwork.vivace.system.menu.inventories.PlayerInfo;
 import me.fournetwork.vivace.system.playerbag.BagSystem;
 import me.fournetwork.vivace.system.playerbag.bagdata.PlayerBag;
 import me.fournetwork.vivace.util.PlayerHead;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
@@ -44,15 +46,15 @@ public class MenuProvider implements InventoryProvider {
         }));
 
         contents.set(0, 4, ClickableItem.of(PlayerHead.getPlayerHead(player.getName()), e -> {
-
+            openInventory(player, PlayerInfo.class);
         }));
 
         contents.set(0, 6, ClickableItem.of(new ItemStack(Material.ENCHANTED_BOOK), e -> {
-
+            TODO(player);
         }));
 
         contents.set(0, 7, ClickableItem.of(new ItemStack(Material.FLINT_AND_STEEL), e -> {
-
+            TODO(player);
         }));
 
         contents.set(1, 4, ClickableItem.of(new ItemStack(Material.BEACON), e -> {
@@ -96,5 +98,9 @@ public class MenuProvider implements InventoryProvider {
     public void openInventory(Player p, Class c) {
         p.closeInventory();
         p.openInventory(MenuSystem.invLinkers.get(c.getName()).getInventory(p));
+    }
+
+    public void TODO(Player player) {
+        player.sendMessage(ChatColor.RED + "[ 메뉴 ] 개발중입니다.");
     }
 }

@@ -4,6 +4,7 @@ import me.fournetwork.vivace.Main;
 import me.fournetwork.vivace.util.inventory.InventoryLinker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -15,7 +16,7 @@ public class GarbageCan implements Listener, InventoryLinker {
 
     @Override
     public void init() {
-        Main.getInstance().getServer().getPluginManager().registerEvents(new GarbageCan(), Main.getInstance());
+
     }
 
     @Override
@@ -24,7 +25,7 @@ public class GarbageCan implements Listener, InventoryLinker {
     }
 
     @Override
-    public Inventory getInventory() {
+    public Inventory getInventory(Player player) {
         return Bukkit.createInventory(null, 27, invName);
     }
 

@@ -7,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 
-import java.awt.*;
-
 public class MenuListener implements Listener {
     @EventHandler
     public void openMenu(PlayerSwapHandItemsEvent event) {
@@ -21,5 +19,6 @@ public class MenuListener implements Listener {
         }
 
         system.openMenuInventory(player);
+        event.setCancelled(true);
     }
 }

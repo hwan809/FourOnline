@@ -4,13 +4,21 @@ import fr.minuskube.inv.InventoryManager;
 import fr.minuskube.inv.SmartInventory;
 import me.fournetwork.vivace.Main;
 import me.fournetwork.vivace.system.System;
+import me.fournetwork.vivace.system.menu.inventories.BagGUI;
+import me.fournetwork.vivace.system.menu.inventories.GarbageCan;
 import me.fournetwork.vivace.system.menu.listener.MenuListener;
 import me.fournetwork.vivace.system.menu.providers.MenuProvider;
+import me.fournetwork.vivace.util.inventory.InventoryLinker;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MenuSystem implements System {
 
@@ -18,6 +26,7 @@ public class MenuSystem implements System {
     public static SmartInventory MENU_INVENTORY;
 
     private InventoryManager invManager;
+    public static Map<String, InventoryLinker> invLinkers = new HashMap<>();
 
     public void openMenuInventory(Player player) {
         MENU_INVENTORY.open(player);
@@ -37,6 +46,8 @@ public class MenuSystem implements System {
                         .build();
 
         Bukkit.getPluginManager().registerEvents(new MenuListener(), Main.getInstance());
+
+        addLinkers();
     }
 
     @Override
@@ -72,5 +83,15 @@ public class MenuSystem implements System {
     @Override
     public String getVersion() {
         return "1.0";
+    }
+
+    public void addLinkers() {
+        invLinkers.put(GarbageCan.class.getName(), new GarbageCan());
+        invLinkers.put(BagGUI.class.getName(), new BagGUI());
+
+        for (InventoryLinker linker : invLinkers.values()) {
+            Main.getInstance().getServer().getPluginManager().registerEvents((Listener) linker, Main.getInstance());
+            linker.init();
+        }
     }
 }

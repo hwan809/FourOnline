@@ -1,5 +1,6 @@
 package me.fournetwork.vivace.system;
 
+import me.fournetwork.vivace.system.menu.MenuSystem;
 import me.fournetwork.vivace.util.DebugLogger;
 
 import java.io.IOException;

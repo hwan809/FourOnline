@@ -1,8 +1,11 @@
 package me.fournetwork.vivace;
 
+import lombok.Getter;
 import me.fournetwork.vivace.system.SystemManager;
+import me.fournetwork.vivace.system.menu.MenuSystem;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@Getter
 public final class Main extends JavaPlugin {
 
     private static Main instance;
@@ -16,6 +19,7 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        initSystemManager();
         // Plugin startup logic
     }
 
@@ -26,6 +30,6 @@ public final class Main extends JavaPlugin {
 
     private void initSystemManager() {
         systemManager = new SystemManager();
-        //systemManager.setup();
+        systemManager.setup(new MenuSystem());
     }
 }

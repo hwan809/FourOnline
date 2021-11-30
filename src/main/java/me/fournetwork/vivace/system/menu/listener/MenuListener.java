@@ -1,20 +1,25 @@
-package me.fournetwork.vivace.system.menu.opener;
+package me.fournetwork.vivace.system.menu.listener;
 
-import me.fournetwork.vivace.system.menu.Inventories;
+import me.fournetwork.vivace.Main;
+import me.fournetwork.vivace.system.menu.MenuSystem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 
-public class MenuOpener implements Listener {
+import java.awt.*;
+
+public class MenuListener implements Listener {
     @EventHandler
     public void openMenu(PlayerSwapHandItemsEvent event) {
+        MenuSystem system = Main.getInstance().getSystemManager().getSystem(MenuSystem.class);
+
         Player player = event.getPlayer();
 
         if (!player.isSneaking()) {
             return;
         }
 
-        Inventories.MENU_INVENTORY.open(player);
+        system.openMenuInventory(player);
     }
 }

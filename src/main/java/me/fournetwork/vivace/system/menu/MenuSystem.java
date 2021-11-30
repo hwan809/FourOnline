@@ -4,8 +4,11 @@ import fr.minuskube.inv.InventoryManager;
 import fr.minuskube.inv.SmartInventory;
 import me.fournetwork.vivace.Main;
 import me.fournetwork.vivace.system.System;
+import me.fournetwork.vivace.system.menu.listener.MenuListener;
 import me.fournetwork.vivace.system.menu.providers.MenuProvider;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
@@ -15,6 +18,10 @@ public class MenuSystem implements System {
     public static SmartInventory MENU_INVENTORY;
 
     private InventoryManager invManager;
+
+    public void openMenuInventory(Player player) {
+        MENU_INVENTORY.open(player);
+    }
 
     @Override
     public void init() {
@@ -28,6 +35,8 @@ public class MenuSystem implements System {
                         .size(3, 9)
                         .title(ChatColor.GOLD + "[ THE NETWORK ]")
                         .build();
+
+        Bukkit.getPluginManager().registerEvents(new MenuListener(), Main.getInstance());
     }
 
     @Override

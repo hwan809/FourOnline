@@ -1,5 +1,6 @@
 package me.fournetwork.vivace.util.page;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class PageInventory {
 
+    @Getter
     public static class Settings {
 
         private final List<Integer> slots;
@@ -32,6 +34,7 @@ public class PageInventory {
         return pageInventory;
     }
 
+    @Getter
     private final List<ItemStack> itemStacks;
     private int currentPage;
     private final Map<Integer, Settings> slots = new HashMap<>();
